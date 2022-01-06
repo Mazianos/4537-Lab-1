@@ -1,7 +1,7 @@
-function WriteButton() {
+WriteButton = () => {
     window.location.href = "/HTML/writer.html";
 }
 
-function ReadButton() {
+ReadButton = () => {
     window.location.href = "/HTML/reader.html";
 }

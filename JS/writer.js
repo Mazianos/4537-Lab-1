@@ -1,10 +1,10 @@
-function SaveTime() {
+SaveTime = () => {
     SaveNotes();
     let Time = new Date().toLocaleTimeString();
     document.getElementById("CurrentTime").innerHTML = Time;
 }
 
-function SaveNotes() {
+SaveNotes = () => {
     let Notes = document.getElementById("CurrentNotes");
     Notes = Array.from(Notes.children);
     for (let i = 0; i < Notes.length; i++) {
@@ -12,7 +12,7 @@ function SaveNotes() {
     }
 }
 
-function NewNoteClick() {
+NewNoteClick = () => {
     let NewNote = document.createElement("li");
     let NoteArea = document.createElement("textarea");
     let RemoveButton = document.createElement("button");
@@ -23,7 +23,7 @@ function NewNoteClick() {
     document.getElementById("CurrentNotes").appendChild(NewNote);
 }
 
-function RemoveNote() {
+RemoveNote = () => {
     let Notes = document.getElementById("CurrentNotes");
     Notes = Array.from(Notes.children);
     window.localStorage.removeItem(Notes.length - 1);
@@ -31,6 +31,6 @@ function RemoveNote() {
     SaveNotes();
 }
 
-function BackButton() {
+BackButton = () => {
     window.location.href = "/HTML/index.html";
 }
