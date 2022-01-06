@@ -12,6 +12,12 @@
     <p>Retrieved at: <span id="CurrentTime"></span></p>
     <ul id="SavedNotes">
     </ul>
-    <script>setInterval(RetrieveTime, 2000)</script>
+    <button onclick="BackButton()">
+        Back
+    </button>
+    <script>
+        RetrieveTime();
+        setInterval(RetrieveTime, 2000);
+    </script>
 </body>
 </html>

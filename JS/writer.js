@@ -30,3 +30,7 @@ function RemoveNote() {
     this.parentElement.remove();
     SaveNotes();
 }
+
+function BackButton() {
+    window.location.href = "/HTML/index.html";
+}
