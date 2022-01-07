@@ -23,14 +23,14 @@ NewNoteClick = () => {
     document.getElementById("CurrentNotes").appendChild(NewNote);
 }
 
-RemoveNote = () => {
+RemoveNote = (elem) => {
     let Notes = document.getElementById("CurrentNotes");
     Notes = Array.from(Notes.children);
     window.localStorage.removeItem(Notes.length - 1);
-    this.parentElement.remove();
+    elem.target.parentNode.remove();
     SaveNotes();
 }
 
 BackButton = () => {
-    window.location.href = "/HTML/index.html";
+    window.location.href = "../HTML/index.html";
 }

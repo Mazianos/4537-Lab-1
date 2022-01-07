@@ -23,5 +23,5 @@ SetNotes = () => {
 };
 
 BackButton = () => {
-    window.location.href = "/HTML/index.html";
+    window.location.href = "../HTML/index.html";
 }
