@@ -5,11 +5,14 @@ SaveTime = () => {
 }
 
 SaveNotes = () => {
-    let Notes = document.getElementById("CurrentNotes");
-    Notes = Array.from(Notes.children);
-    for (let i = 0; i < Notes.length; i++) {
-        window.localStorage.setItem(i, Notes[i].firstChild.value);
-    }
+    let CurrentNotes = Array.from(document.getElementsByClassName("Note"));
+    let ToSave = []
+    CurrentNotes.forEach(element => {
+        ToSave.push(element.value);
+    });
+    ToSave = { "html" : ToSave };
+    window.localStorage.setItem("ReaderList", JSON.stringify(ToSave));
+    
 }
 
 NewNoteClick = () => {
@@ -18,6 +21,7 @@ NewNoteClick = () => {
     let RemoveButton = document.createElement("button");
     RemoveButton.textContent = "Remove";
     RemoveButton.onclick = RemoveNote;
+    NoteArea.className = "Note";
     NewNote.appendChild(NoteArea);
     NewNote.appendChild(RemoveButton);
     document.getElementById("CurrentNotes").appendChild(NewNote);
@@ -26,7 +30,6 @@ NewNoteClick = () => {
 RemoveNote = (elem) => {
     let Notes = document.getElementById("CurrentNotes");
     Notes = Array.from(Notes.children);
-    window.localStorage.removeItem(Notes.length - 1);
     elem.target.parentNode.remove();
     SaveNotes();
 }
@@ -34,3 +37,16 @@ RemoveNote = (elem) => {
 BackButton = () => {
     window.location.href = "../HTML/index.html";
 }
+
+SetNotes = () => {
+    let ParsedHTML = JSON.parse(window.localStorage.getItem("ReaderList")).html;
+    ParsedHTML.forEach(element => {
+        let NewItem = document.createElement("li");
+        let NewText = document.createElement("textarea");
+        NewText.value = element;
+        NewText.className = "Note"
+        NewItem.appendChild(NewText);
+        document.getElementById("CurrentNotes").appendChild(NewItem);
+    });
+    SaveTime();
+};

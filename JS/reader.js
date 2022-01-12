@@ -6,20 +6,15 @@ RetrieveTime = () => {
 
 SetNotes = () => {
     document.getElementById("SavedNotes").innerHTML = "";
-    let keys = Array.from(Object.keys(localStorage));
-
-    if (keys == null) {
-        return
-    }
-
-    keys.sort();
-    for (let i = 0; i < keys.length; i++) {
-        let NewNote = document.createElement("li");
-        let NoteArea = document.createElement("p");
-        NoteArea.innerText = window.localStorage.getItem(keys[i]);
-        NewNote.append(NoteArea);
-        document.getElementById("SavedNotes").appendChild(NewNote);
-    }
+    let ParsedHTML = JSON.parse(window.localStorage.getItem("ReaderList")).html;
+    ParsedHTML.forEach(element => {
+        let NewItem = document.createElement("li");
+        let NewText = document.createElement("textarea");
+        NewText.setAttribute("readonly", "");
+        NewText.value = element;
+        NewItem.appendChild(NewText);
+        document.getElementById("SavedNotes").appendChild(NewItem);
+    });
 };
 
 BackButton = () => {

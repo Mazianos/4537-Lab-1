@@ -15,9 +15,12 @@
     <button onclick="NewNoteClick()">
         New Note
     </button>
-    <button onclick="BackButton()">
+    <a href="./index.html" class="button">
         Back
-    </button>
-    <script>setInterval(SaveTime, 2000)</script>
+    </a>
+    <script>
+        SetNotes();
+        setInterval(SaveTime, 2000);
+    </script>
 </body>
 </html>
