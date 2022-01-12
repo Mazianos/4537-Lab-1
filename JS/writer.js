@@ -12,7 +12,6 @@ SaveNotes = () => {
     });
     ToSave = { "html" : ToSave };
     window.localStorage.setItem("ReaderList", JSON.stringify(ToSave));
-    
 }
 
 NewNoteClick = () => {
@@ -40,13 +39,15 @@ BackButton = () => {
 
 SetNotes = () => {
     let ParsedHTML = JSON.parse(window.localStorage.getItem("ReaderList")).html;
-    ParsedHTML.forEach(element => {
-        let NewItem = document.createElement("li");
-        let NewText = document.createElement("textarea");
-        NewText.value = element;
-        NewText.className = "Note"
-        NewItem.appendChild(NewText);
-        document.getElementById("CurrentNotes").appendChild(NewItem);
-    });
+    if (ParsedHTML === null) {
+        ParsedHTML.forEach(element => {
+            let NewItem = document.createElement("li");
+            let NewText = document.createElement("textarea");
+            NewText.value = element;
+            NewText.className = "Note"
+            NewItem.appendChild(NewText);
+            document.getElementById("CurrentNotes").appendChild(NewItem);
+        });
+    }
     SaveTime();
 };
