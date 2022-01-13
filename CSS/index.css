@@ -9,4 +9,9 @@
     color: white;
     font-weight: bold;
     line-height: 25px;
+    margin: 1vh;
+}
+
+h1 {
+    text-align: center;
 }
