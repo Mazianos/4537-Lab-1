@@ -1,3 +1,7 @@
+ul {
+    list-style-type: none;
+}
+
 .button {
     display: block;
     width: 115px;

@@ -38,8 +38,9 @@ BackButton = () => {
 }
 
 SetNotes = () => {
-    let ParsedHTML = JSON.parse(window.localStorage.getItem("ReaderList")).html;
-    if (ParsedHTML === null) {
+    let ParsedHTML = JSON.parse(window.localStorage.getItem("ReaderList"));
+    if (ParsedHTML !== null) {
+        ParsedHTML = ParsedHTML.html;
         ParsedHTML.forEach(element => {
             let NewItem = document.createElement("li");
             let NewText = document.createElement("textarea");
